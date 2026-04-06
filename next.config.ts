@@ -13,7 +13,7 @@ const nextConfig = {
         hostname: 'res.cloudinary.com',
         pathname: '/**',
       },
-    ] as any, // ✅ fix TypeScript error
+    ] as any, 
 
     localPatterns: [
       {
@@ -40,8 +40,6 @@ const nextConfig = {
   turbopack: {
     root: path.resolve(dirname),
   },
-
-  // ✅ prevent build failure
   typescript: {
     ignoreBuildErrors: true,
   },
