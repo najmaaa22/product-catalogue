@@ -10,10 +10,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com',
+        hostname: '**',  
         pathname: '/**',
       },
-    ] as any, 
+    ] as any,
 
     localPatterns: [
       {
@@ -40,6 +40,7 @@ const nextConfig = {
   turbopack: {
     root: path.resolve(dirname),
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
