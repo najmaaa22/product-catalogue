@@ -17,19 +17,23 @@ export default function ProductCard({
   imageUrl,
   imageAlt,
 }: ProductCardProps) {
+  // ✅ Safe image URL handling
+  const fullImageUrl =
+    imageUrl && imageUrl.startsWith('http')
+      ? imageUrl
+      : imageUrl
+      ? `${process.env.NEXT_PUBLIC_SERVER_URL}${imageUrl}`
+      : null
+
   return (
     <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
       <Link href={`/products/${id}`} className="flex flex-col h-full">
-        
+
         {/* Image Container */}
         <div className="relative w-full aspect-4/3 bg-slate-100 overflow-hidden">
-          {imageUrl ? (
+          {fullImageUrl ? (
             <img
-              src={
-                imageUrl.startsWith('http')
-                  ? imageUrl
-                  : `${process.env.NEXT_PUBLIC_SERVER_URL}${imageUrl}`
-              }
+              src={fullImageUrl}
               alt={imageAlt || title}
               className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-in-out"
             />
@@ -73,6 +77,7 @@ export default function ProductCard({
             </div>
           </div>
         </div>
+
       </Link>
     </div>
   )
