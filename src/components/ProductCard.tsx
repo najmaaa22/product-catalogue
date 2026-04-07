@@ -17,7 +17,6 @@ export default function ProductCard({
   imageUrl,
   imageAlt,
 }: ProductCardProps) {
-  // ✅ Safe image URL handling
   const fullImageUrl =
     imageUrl && imageUrl.startsWith('http')
       ? imageUrl
